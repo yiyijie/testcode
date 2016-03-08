@@ -24,11 +24,13 @@ print(man)
 print(other)
 
 try:
-    man_file = open('man_data.txt', 'w')
-    other_file = open('other_data.txt', 'w')
-    print(man, file = man_file)
-    print(other, file = other_file)
-    man_file.close()
-    other_file.close()
-except IOError:
-    print('File error')
+    with open('man_data.txt', 'w') as man_file:#'命名文件名并赋值一个文件对象'
+        print(man, file = man_file)#'指定的列表保存到磁盘文件上'
+    with open('other_data.txt', 'w') as other_file:#'同上'
+        print(other, file = other_file)#'同上'
+except IOError as err:
+    print('File error:' + str(err))
+
+    
+
+
